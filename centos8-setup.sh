@@ -62,16 +62,16 @@ cat > ${shadowsocks_config} <<-EOF
 {
     "servers": [
         {
-            "address":"127.0.0.1",
+            "address":"0.0.0.0",
             "port":${shadowsocksport},
-            “password":"${shadowsockspassword}",
+            "password":"${shadowsockspassword}",
             "timeout":7200,
             "method":"aes-256-gcm"
         },
         {
-            "address":"127.0.0.1",
+            "address":"0.0.0.0",
             "port":${shadowsocksport1},
-            “password":"${shadowsockspassword1}",
+            "password":"${shadowsockspassword1}",
             "timeout":7200,
             "method":"chacha20-ietf-poly1305"
         }
