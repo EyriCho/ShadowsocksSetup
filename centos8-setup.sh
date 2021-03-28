@@ -7,7 +7,7 @@ echo "#"
 # Check the new version from https://github.com/shadowsocks/shadowsocks-rust/releases
 # Update the new version link
 echo "Download package"
-curl -LJO shadowsocks-rust-gnu.tar.xz https://github.com/shadowsocks/shadowsocks-rust/releases/download/v1.10.1/shadowsocks-v1.10.1.x86_64-unknown-linux-gnu.tar.xz
+curl -LJo shadowsocks-rust-gnu.tar.xz https://github.com/shadowsocks/shadowsocks-rust/releases/download/v1.10.1/shadowsocks-v1.10.1.x86_64-unknown-linux-gnu.tar.xz
 # must use J to unarchive
 tar -xJf shadowsocks-rust-gnu.tar.xz -C /usr/local/bin
 rm -f shadowsocks-rust-gnu.tar.xz
@@ -94,9 +94,10 @@ Restart=on-abort
 WantedBy=multi-user.target
 EOF
 
-# 
-systemctl start shadwosocks
-systemctl enable shadwosocks
+# start service
+systemctl daemon-reload
+systemctl start shadowsocks
+systemctl enable shadowsocks
 
 default_zone=$(firewall-cmd --get-default-zone)
 firewall-cmd --permanent --zone=${default_zone} --add-port=${shadowsocksport}/tcp
